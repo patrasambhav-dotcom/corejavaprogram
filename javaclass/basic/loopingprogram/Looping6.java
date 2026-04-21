@@ -4,7 +4,7 @@ class Looping6
 	public static void main( String arg[])
 	{
 		Scanner sc=new Scanner(System.in);
-		System.out.println(" entera three digit number");
+		System.out.println(" enter  number");
 		int no=sc.nextInt();
 		int r=0;
 		while(no!=0)

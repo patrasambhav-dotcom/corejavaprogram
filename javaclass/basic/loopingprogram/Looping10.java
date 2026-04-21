@@ -17,7 +17,7 @@ class Looping10
 		}
 		if(s==temp)
 		{
-			System.out.println(" number is plaidrom");
+			System.out.println(" number is plaindrome");
 		}
 		else
 		System.out.println( " reverse is"+s);

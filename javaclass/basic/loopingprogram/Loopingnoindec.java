@@ -4,7 +4,7 @@ class Loopingnoindec
 	public static void main( String arg[])
 	{
 		Scanner sc=new Scanner(System.in);
-		System.out.println(" entera three digit number");
+		System.out.println(" enter a  number");
 		int no=sc.nextInt();
 		while(no!=0)
 		{
