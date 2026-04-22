@@ -944,7 +944,7 @@ System.out.println("1 2 3 4 5");
 
 int j;
 for(j=1;j<=4;j++)
-    System.out.print(j+"\t");
+    System.out.print(j+"\t");//("\t" means tab otherwise it willbe down)
 System.out.println();
 
 
