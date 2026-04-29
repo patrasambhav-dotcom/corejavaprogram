@@ -1,13 +1,13 @@
 import java.util.Scanner;
-class Methodsimpleintwitharg
+class Simpleintwithargwithreturn
 {
 	static double simpleint(double p,double r,double t)
 	{
 		
 		double si=p*r*t*0.01;
-		System.out.println("simple intrest = "+si);
+		return si;
 
-		
+
 	}
 	public static void main(String arg[])
 	{
@@ -18,7 +18,7 @@ class Methodsimpleintwitharg
 		double r=sc.nextDouble();
 		System.out.println("Enter time");
 		double t=sc.nextDouble();
-		simpleint(p,r,t);
-	
+		double res=simpleint(p,r,t);
+		System.out.println("Simple intrest = "+res);
 	}
 }

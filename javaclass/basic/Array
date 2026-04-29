@@ -1,0 +1,1871 @@
+array
+_________
+
+int  a=10;
+a=20;
+a=30;
+System.out.println(a);
+
+here previous 2 data loss
+
+
+
+solution:
+
+
+int a=10,b=20,c=30;
+System.out.println(a+" "+b+" "+c);   
+
+o/p:
+10  20 30 
+
+
+suppose store 100 data 100 variable .
+but good programer not create 100 variable choose array (all values must de same type.)
+
+
+single name store all data and acess data by using index.
+
+(1)
+1d array 
+(2)
+multidimesional array (2d ,3d,...)
+
+
+How to declare 1d array  
+_______________________
+
+datatype arrname[];
+or
+datatype[] arrname;
+or
+datatype  []arrname;
+
+
+How to instantion  or memory creation 
+____________________________________________
+
+datatype arrname[];
+arrname=new datatype[size];
+
+or
+datatype arrname[]=new datatype[size];
+
+
+How to initlize array 
+____________________
+
+datatype arrname[];
+arrname=new datatype[size];
+arrname[index]=literal;
+.
+.
+.
+
+single line initlization
+_________________________
+
+datatype arrname[]={list of elements};
+
+
+
+
+
+
+
+int arr[]={10,20,30};
+System.out.println(arr[0]+" "+arr[1]+" "+arr[2]);   
+
+
+o/p:
+10 20 30
+
+
+int arr[]={10,20,30,40};
+System.out.println(arr);
+System.out.println(arr.length);
+
+
+o/p:
+address
+4
+
+//display array element forward direction 
+int arr[]={10,20,30,40};
+int index;
+for(index=0;index<arr.length;index++)
+{
+	System.out.print(arr[index]+" ");
+}
+
+o/p:
+10 20 30 40
+
+//display array element backward direction 
+int arr[]={10,20,30,40};
+int index;
+for(index=arr.length-1;index>=0;index--)
+{
+	System.out.print(arr[index]+" ");
+}
+
+o/p:
+40 30 20 10
+
+
+
+//declare array instantion ,initlize and display;
+
+int arr[];   //array declartion
+arr=new int[4]; //array instantion
+arr[0]=10; //array initlization
+arr[1]=20;
+ar[2]=30;
+arr[3]=40;
+int index;
+for(index=0;index<arr.length;index++)
+{
+	System.out.print(arr[index]+" ");
+}
+
+
+
+//take 4 input form keyboad and dsiaplay it
+
+
+Scanner sc=new Scanner(System.in);
+int arr[];   //array declartion
+arr=new int[4]; //array instantion
+int index;
+System.out.println("enter 4 elements ");
+for(index=0;index<arr.length;index++)
+{
+	arr[index]=sc.nextInt();
+}
+System.out.println("elements are ");
+for(index=0;index<arr.length;index++)
+{
+	System.out.print(arr[index]+" ");
+}
+
+
+
+
+//take n number element input form keyboad and dsiaplay it
+
+
+Scanner sc=new Scanner(System.in);
+int arr[];   //array declartion
+System.out.println("enter how many element store ");
+int size=sc.nextInt();
+arr=new int[size]; //array instantion
+int index;
+System.out.println("enter "+size+" elements ");
+for(index=0;index<size;index++)
+{
+	arr[index]=sc.nextInt();
+}
+System.out.println("elements are ");
+for(index=0;index<size;index++)
+{
+	System.out.print(arr[index]+" ");
+}
+
+
+array concept
+________________
+
+int arr[]=new int[3];
+
+once array is create array size not increase not decrease.
+
+
+int arr[]=new int[3];
+System.out.println(arr); //assume arrray create 5000 location
+System.out.println(arr.length); // 3
+arr=new int[5];
+System.out.println(arr); //assume arrray create 6000 location
+System.out.println(arr.length); // 5
+
+
+assgin value
+___________
+
+int a=10;
+int b=a;
+double c=a;
+System.out.println(a+" "+b+" "+c);
+
+o/p:
+10 10 10.0
+
+
+
+
+assgin array
+________________
+when assgin array another array same type.
+int arr[]={10,20,30};
+int arr1[]=arr; //valid
+//double arr2[]=arr; //invalid 
+System.out.println(arr+" "+arr1); //5000  5000
+
+
+
+int arr[]={10,20};
+int arr1[]=arr;
+System.out.println(arr[0]+" "+arr[1]);//10 20
+System.out.println(arr1[0]+" "+arr1[1]);// 10 20
+arr[0]=30;
+arr[1]=40;
+System.out.println(arr[0]+" "+arr[1]);//30 40
+System.out.println(arr1[0]+" "+arr1[1]);// 30 40
+
+
+
+passing array element in method 
+_____________________________
+class Test
+{
+	static void show(int ele)
+	{
+	  System.out.println(ele);
+	}
+
+	public static void main(String arg[])
+	{
+	    int arr[]={10,20,30};
+	    //show(arr[0]);
+         int index;
+         for(index=0;index<arr.length;index++)
+         {
+            show(arr[index]);
+         }
+	}
+}
+
+o/p:
+10
+20
+30
+
+
+passing arraname in method
+_____________________________
+class Test
+{
+	static void show(int arr[])
+	{
+	   int index;
+         for(index=0;index<arr.length;index++)
+         {
+            System.out.println(arr[index]));
+         }
+	}
+
+	public static void main(String arg[])
+	{
+	    int arr[]={10,20,30};
+	    show(arr);
+        
+	}
+}
+
+o/p:
+10
+20
+30
+
+
+call by value 
+_________
+class Test
+{
+	static void show(int a)
+	{
+	   a=20;
+	}
+
+	public static void main(String arg[])
+	{
+	    int a=10;
+	    show(a);
+	    System.out.println(a);
+        
+	}
+}
+
+o/p:
+10
+
+call by refernce 
+_________
+class Test
+{
+	static void show(int a[])
+	{
+	   a[0]=20;
+	}
+
+	public static void main(String arg[])
+	{
+	    int a[]={10};
+	    show(a);
+	    System.out.println(a[0]);
+        
+	}
+}
+
+o/P
+20
+
+
+
+//sum of element
+
+int arr[]={5,7,8,9,12};
+int s=0;
+int index;
+for(index=0;index<arr.length;index++)
+{
+	s=s+arr[index];
+}
+System.out.println("sum of element="+s);
+
+
+find the sum of element using method 
+________________________________________
+
+
+class Test
+{
+	static void sumele(int arr[])
+	{
+	   	int s=0;
+		int index;
+		for(index=0;index<arr.length;index++)
+		{
+			s=s+arr[index];
+		}
+		System.out.println("sum of element="+s);
+	}
+
+	public static void main(String arg[])
+	{
+	   	int arr[]={5,7,8,9,12};
+		sumele(arr);
+	
+        
+	}
+}
+
+
+
+//input and sum of element using method 
+
+
+import java.util.*;
+
+class Test
+{
+	static void sumele(int arr[])
+	{
+	   	int s=0;
+		int index;
+		for(index=0;index<arr.length;index++)
+		{
+			s=s+arr[index];
+		}
+		System.out.println("sum of element="+s);
+	}
+    static void input(int arr[])
+    {
+            int index;
+            Scanner sc=new Scanner(Systen.in);
+		for(index=0;index<arr.length;index++)
+		{
+			arr[index]=sc.nextInt();
+		}
+		
+    }
+	public static void main(String arg[])
+	{
+	   Scanner sc=new Scanner(System.in);
+	   System.out.println("enter array size ");
+	   int size=sc.nextInt();
+	   	int arr[]=new int[size];
+	   	System.out.println("enter "+size+" elements");
+	   	input(arr);
+		sumele(arr); 
+	}
+}
+
+
+//sum of element
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int s=0;
+	   int index;
+	   for(index=0;index<arr.length;index++)
+	   {
+	  		 s=s+arr[index];
+	   }
+	   System.out.println("sum of element="+s);
+	}
+}
+
+o/p:
+sum of element=41
+
+Q2 display first and last element any array 
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	  
+	   System.out.println("first element="+arr[0]);
+	   System.out.println("last element="+arr[arr.length-1]);
+	}
+}
+C:\Users\HP\Desktop\STACKPROGRAM>java Test
+first element=5
+last element=7
+
+Q3 dispaly all element in array  forward
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   for(index=0;index<arr.length;index++)
+	   {
+	     System.out.println(arr[index]);
+	   }
+	}
+}
+o/p:
+
+5
+8
+9
+12
+7
+Q4 display element in backward
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   System.out.println("elements are revorder");
+	   for(index=arr.length-1;index>=0;index--)
+	   {
+	     System.out.println(arr[index]);
+	   }
+	}
+}
+
+Q5 display first even element
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   for(index=0;index<arr.length;index++)
+	   {
+                 if(arr[index]%2==0)
+                 {
+                 	System.out.println("first even element="+arr[index]);
+                 	break;
+                 }
+	     
+	   }
+	}
+}
+
+o/p:
+first even element=8
+
+Q6 count no of even element 
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   int ec=0;
+	   for(index=0;index<arr.length;index++)
+	   {
+                 if(arr[index]%2==0)
+                 {	
+                 	ec++;
+                 }
+	   }
+	   System.out.println("total no of even element="+ec);
+	}
+}
+o/p:
+total no of even element=2
+
+
+Q7 wap count no of odd and even elements in array
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   int ec=0,oc=0;
+	   for(index=0;index<arr.length;index++)
+	   {
+                 if(arr[index]%2==0)
+                 {	
+                 	ec++;
+                 }
+                 else
+                 {
+                 	oc++;
+                 }
+	   }
+	   System.out.println("total no of even element="+ec);
+	   System.out.println("total no of odd element="+oc);
+	}
+}
+o/p:
+
+total no of even element=2
+total no of odd element=3
+
+Q7 wap sum of odd and even element in array 
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   int es=0,os=0;
+	   for(index=0;index<arr.length;index++)
+	   {
+                 if(arr[index]%2==0)
+                 {	
+                 	es=es+arr[index];
+                 }
+                 else
+                 {
+                 	os=os+arr[index];
+                 }
+	   }
+	   System.out.println("sum  of even element="+es);
+	   System.out.println("sum of odd element="+os);
+	}
+}
+
+o/p:
+sum  of even element=20
+sum of odd element=21
+
+Qfind big element in array
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   int big=arr[0];
+	   for(index=1;index<arr.length;index++)
+	   {
+               if(big<arr[index])
+               {
+                 big=arr[index];
+               } 
+	   }
+	   System.out.println("big element="+big);
+	   
+	}
+}
+
+
+Qfind the smallest element in array
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   int small=arr[0];
+	   for(index=1;index<arr.length;index++)
+	   {
+               if(small>arr[index])
+               {
+                 small=arr[index];
+               } 
+	   }
+	   System.out.println("small element="+small);
+	   
+	}
+}
+
+
+Q display bigest and smallest element in array 
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,9,12,7};
+	   int index;
+	   int small=arr[0];
+	   int big=arr[0];
+	   for(index=1;index<arr.length;index++)
+	   {
+               if(small>arr[index])
+               {
+                 small=arr[index];
+               } 
+               if(big<arr[index])
+               {
+               	 big=arr[index];
+               }
+	   }
+	   System.out.println("small element="+small);
+	   System.out.println("big element="+big);
+	}
+}
+
+o/p:
+small element=5
+big element=12
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,6,12,9,7};
+	   int index;
+	   int big=Integer.MIN_VALUE,sbig=Integer.MIN_VALUE;
+	   for(index=1;index<arr.length;index++)
+	   {
+            if(big<arr[index])
+            {
+            	sbig=big;
+            	big=arr[index];
+            }  
+             if(big>arr[index]&&arr[index]>sbig)
+             {
+             	sbig=arr[index];
+             }   
+	   }
+
+	   System.out.println("second big element="+sbig);
+	}
+}
+
+
+
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,6,12,9,7};
+	   int index;
+	   int small=Integer.MAX_VALUE,ssmall=Integer.MAX_VALUE;
+	   for(index=0;index<arr.length;index++)
+	   {
+            if(small>arr[index])
+            {
+            	ssmall=small;
+            	small=arr[index];
+            }  
+             if(small<arr[index]&&arr[index]<ssmall)
+             {
+             	ssmall=arr[index];
+             }   
+	   }
+
+	   System.out.println("second small element="+ssmall);
+	}
+}
+
+
+o/p
+second smallest element 
+6
+
+
+serach an element
+______________________
+import java.util.*;
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,6,12,9,6,8};
+	   Scanner sc=new Scanner(System.in);
+	   System.out.println("enter serach element ");
+	   int ser=sc.nextInt();
+	   int index;
+        for(index=0;index<arr.length;index++)
+        {
+        	if(arr[index]==ser)
+        	{
+        		break;
+        	}
+        }
+        if(arr.length==index)
+        {
+        	System.out.println(ser +" element not found ");
+        }
+        else
+        {
+        	System.out.println(ser+" element found "+(index+1)+" postion");
+        }
+	  
+	}
+}
+
+C:\Users\HP\Desktop\STACKPROGRAM>java Test
+enter serach element
+6
+6 element found 3 postion
+
+C:\Users\HP\Desktop\STACKPROGRAM>java Test
+enter serach element
+8
+8 element found 2 postion
+
+C:\Users\HP\Desktop\STACKPROGRAM>java Test
+enter serach element
+23
+23 element not found
+
+C:\Users\HP\Desktop\STACKPROGRAM>
+
+
+one element occur how many times
+___________________________________
+
+
+import java.util.*;
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={5,8,6,12,9,6,8};
+	   Scanner sc=new Scanner(System.in);
+	   System.out.println("enter serach element ");
+	   int ser=sc.nextInt();
+	   int index,c=0;
+        for(index=0;index<arr.length;index++)
+        {
+        	if(arr[index]==ser)
+        	{
+        		c++;
+        	}
+        }
+        if(c==0)
+        {
+        	System.out.println(ser +" element not found ");
+        }
+        else
+        {
+        	System.out.println(ser+" element found "+c+" times");
+        }
+	  
+	}
+}
+
+
+
+serach elemennt delete after element
+serach elemennt delete before element
+serach element insert new element after 
+serach element insert new element after  all loaction
+serach element insert new element before
+serach element insert new element after  all loaction
+serach element insert new element before all location
+
+
+assgin one array to another array
+__________________________
+
+int a=10;
+double b;
+b=a; // valid
+
+int a[]=new int[3];
+double b[]=new double[5];
+b=a; // invalid
+
+b[0]=a[0];  //valid
+
+int a[]=new int[3];
+int b[]=a;  //valid
+
+array size fixed 
+___________________________
+int arr[]=new int[5];
+arr=new int[7];
+
+
+int arr[]=new int[5];
+sop(arr);
+arr=new int[7];
+sop(arr);
+
+
+union
+intersection
+
+
+
+
+
+
+2d array
+______________
+
+How to declare 2d array
+
+datatype arrname[][];
+
+int    arr[][];
+
+How to create or instatntion  2d array
+__________________________________________
+
+datatype arrname[][];
+arrname=new datatype[r][c];
+
+or
+datatype arrname[][]=new datatype[r][c];
+
+r->collection of 1 darray 
+c->each 1d array no of elements (every row same element  matrix format)
+
+
+initlization
+____________
+arrname[rindex][cindex]=element;
+
+
+int arr[][];
+arr=new int[2][3];
+System.out.println(arr); //adddress
+System.out.println(arr[0]); //1d array address
+System.out.println(arr[0][0]); //0
+
+
+int arr[][];
+arr=new int[2][3];
+arr[0][0]=10;
+arr[0][1]=20;
+arr[0][2]=30;
+arr[1][0]=40;
+arr[1][1]=50;
+arr[1][2]=60;
+int i,j;
+for(i=0;i<2;i++)
+{
+	for(j=0lj<3;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+
+
+int arr[][];
+arr=new int[2][3];
+arr[0][0]=10;
+arr[0][1]=20;
+arr[0][2]=30;
+arr[1][0]=40;
+arr[1][1]=50;
+arr[1][2]=60;
+int i,j;
+for(i=0;i<2;i++)
+{
+	for(j=0;j<3;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+2d array intlizatioin in single line
+___________________________________
+
+datatype arrname[][]={list of data};
+
+
+
+
+int arr[][]={{10,20,30},{40,50,60}};
+int i,j;
+for(i=0;i<2;i++)
+{
+	for(j=0;j<3;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+
+
+
+
+
+int arr[][]={{10,20,30},{40,50,60},{70,80,90}};
+int i,j;
+for(i=0;i<arr.length;i++)
+{
+	for(j=0;j<arr[i].length;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+jagged array
+______________
+int arr[][]={{10,20,30},{40,50},{70}};
+int i,j;
+for(i=0;i<arr.length;i++)
+{
+	for(j=0;j<arr[i].length;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+
+for each  loop
+___________
+
+
+for (element :arrname)
+{
+	
+}
+
+int arr[]={10,20,30,40};
+for(int ele:arr)
+{
+	System.out.println(ele);
+}
+
+display 2d array using for each loop
+_________________________________________
+
+int arr[][]={{10,20,30},{40,50},{70}};
+
+for(int i[]:arr)
+{
+	for(int j:i)
+	{
+	  System.out.print(j+"\t");
+	}
+	System.out.println();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Scanner sc=new Scanner(System.in);
+int arr[][];
+arr=new int[2][3];
+System.out.println("enter 6 elements ");
+int i,j;
+
+for(i=0;i<2;i++)
+{
+	for(j=0;j<3;j++)
+	{
+	  arr[i][j]=sc.nextInt();
+	}
+	
+}
+System.out.println("elements are ");
+for(i=0;i<2;i++)
+{
+	for(j=0;j<3;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+
+
+Scanner sc=new Scanner(Sydtem.in);
+int mark[][];
+mark=new int[3][4];
+
+int i,j;
+for(i=0;i<3;i++)
+{
+   System.out.println("enter student "+(i+1));
+	for(j=0;j<4;j++)
+	{
+	    System.out.print("enter mark :"+(j+1));
+	     mark[i][j]=sc.nextInt();
+	}
+}
+int total=0;
+System.out.println("stud\tm1\tm2\m3\m4\ttotal\tavg");
+for(i=0;i<3;i++)
+{
+      System.out.print((i+1)+"\t");
+	for(j=0;j<4;j++)
+	{
+	  System.out.print(mark[i][j]+"\t");
+	  total=total+mark[i][j];
+	}
+	System.out.println(total+"\t"+total/4);
+	total=0;
+}
+
+
+
+
+
+
+
+
+
+Scanner sc=new Scanner(Sydtem.in);
+int arr[][];
+System.out.println("enter 2d array r and col");
+int r=sc.nextInt();
+int c=sc.nextInt();
+arr=new int[r][c];
+System.out.println("enter "+r*c" elements ");
+int i,j;
+
+for(i=0;i<r;i++)
+{
+	for(j=0;j<c;j++)
+	{
+	  arr[i][j]=sc.nextInt();
+	}
+	
+}
+System.out.println("elements are ");
+for(i=0;i<r;i++)
+{
+	for(j=0;j<c;j++)
+	{
+	  System.out.print(arr[i][j]+"\t");
+	}
+	System.out.println();
+}
+
+
+passing 2d array in method
+________________________
+import java.util.*;
+class Test
+{
+	static void input(int arr[][],int r,int c)
+	{
+	       System.out.println("enter "+r*c+" elements ");
+				int i,j;
+
+				for(i=0;i<r;i++)
+				{
+					for(j=0;j<c;j++)
+					{
+					  arr[i][j]=sc.nextInt();
+					}
+					
+				}
+	}
+	static void disp(int arr[][],int r,int c)
+	{
+	     System.out.println("elements are ");
+			for(i=0;i<r;i++)
+			{
+				for(j=0;j<c;j++)
+				{
+				  System.out.print(arr[i][j]+"\t");
+				}
+				System.out.println();
+			}
+
+	}
+	public static void main(String arg[])
+	{
+	      Scanner sc=new Scanner(Sydtem.in);
+			int arr[][];
+			System.out.println("enter 2d array r and col");
+			int r=sc.nextInt();
+			int c=sc.nextInt();
+			arr=new int[r][c];
+			input(arr,r,c);
+			disp(arr,r,c);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+
+class TwoDArray {
+    int arr[][];
+    int r, c;
+    Scanner sc;
+
+    // Constructor to initialize array and take input
+    TwoDArray(int rows, int cols) {
+        sc = new Scanner(System.in);
+        r = rows;
+        c = cols;
+        arr = new int[r][c];
+
+        System.out.println("Enter " + (r * c) + " elements:");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+    }
+
+    // Method to display array
+    void display() {
+        System.out.println("Elements are:");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
+
+ class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter number of rows and columns:");
+        int rows = sc.nextInt();
+        int cols = sc.nextInt();
+
+        // Object creation → constructor will handle input
+        TwoDArray obj = new TwoDArray(rows, cols);
+
+        // Display array
+        obj.display();
+    }
+}
+
+
+
+disadvantage of array
+__________________
+
+int arr[]=new int[5];
+
+we can  not increase array size.
+
+arr=new int[7];
+
+
+double arr[]=new double[];
+arr[0]=10;
+arr[1]=12.34;
+arr[2]='a';
+
+
+int a=10;
+double b=a; //valid
+
+double x=12.34;
+int y=x;  //invalid
+
+assgin array
+___________________
+
+int arr[]={10,20,30};
+//double arr1[]=arr; error
+int arr1[]=arr;
+
+
+
+import java.util.Scanner;
+class Test
+{
+	
+		 public static void main(String arg[])
+		 {
+		  		int arr[]={10,20,30,40};
+		  		int arr1[]=arr;// assgin array
+		  		System.out.println(arr+" "+arr1);
+		  		int i;
+		  		for(i=0;i<arr.length;i++)
+		  		{
+		  			System.out.print(arr[i]+" ");
+		  		}
+                System.out.println("\n elements are ");
+                for(i=0;i<arr1.length;i++)
+		  		{
+		  			System.out.print(arr1[i]+" ");
+		  		}
+			      
+        
+		  		}
+}
+
+o/p:
+[I@7852e922 [I@7852e922
+10 20 30 40
+ elements are
+10 20 30 40  
+	
+passing arrname in method
+______________________________
+
+import java.util.Scanner;
+class Test
+{
+
+	static void show(int arr1[])
+	{
+		int i;
+		for(i=0;i<arr1.length;i++)
+		{
+			System.out.print(arr1[i]+" ");
+		}
+	}
+	static int sumele(int arr[])
+	{
+		int s=0,i;
+		for(i=0;i<arr.length;i++)
+		{
+			 s=s+arr[i];
+		}
+		return s;
+	}
+	
+		 public static void main(String arg[])
+		 {
+		  		int arr[]={10,20,30,40};
+		  		show(arr);
+		  		System.out.println("sum of element="+sumele(arr));
+			      
+        
+		 }
+}
+
+
+method returning refernce
+_________________________
+
+class Test
+{
+
+	static int[] show()
+	{
+		//int a=5,b=7,c=10,d=8,e=6; 
+		int arr[]={5,7,10,8,6};
+
+
+        return arr;
+	}
+	
+		 public static void main(String arg[])
+		 {
+		  		
+			 int res[]=show();    
+			 int i;
+			 for(i=0;i<res.length;i++)
+			 {
+			 	System.out.print(res[i]+" ");
+			 } 
+        
+		 }
+}
+
+
+	vararg method
+	____________________
+
+class Test
+{
+        static void show(int ...arr)//var arg array type 
+        {
+            int i;
+            for(i=0;i<arr.length;i++)
+            {
+            	System.out.print(arr[i]+" ");
+            }
+            System.out.println();
+        }
+	
+		 public static void main(String arg[])
+		 {
+		  		
+			 int a=5,b=7;
+			 show(a,b,30,25);
+        	 show(10,20);
+        	 show();
+        	 int arr[]={3,6,7};
+        	 show(arr);
+		 }
+}
+
+o/p:
+5 7 30 25
+10 20
+
+3 6 7
+
+
+class Test
+{
+        static void show(int x,int ...arr)//var arg array type 
+        {
+            int i;
+            for(i=0;i<arr.length;i++)
+            {
+            	System.out.print(arr[i]+" ");
+            }
+            System.out.println();
+        }
+	
+		 public static void main(String arg[])
+		 {
+		  		
+			 int a=5,b=7;
+			 show(a,b,30,25);
+        	 show(10,20);
+        	 show(9);
+        	 
+		 }
+}
+
+
+o/p:
+7 30 25
+20
+
+var arg must  be last parameter
+class Test
+{
+        static void show(int ...arr,int x)//var arg array type 
+        {
+            int i;
+            for(i=0;i<arr.length;i++)
+            {
+            	System.out.print(arr[i]+" ");
+            }
+            System.out.println();
+        }
+	
+		 public static void main(String arg[])
+		 {
+		  		
+			 int a=5,b=7;
+			 show(a,b,30,25);
+        	 show(10,20);
+        	 show(9);
+        	 
+		 }
+}
+
+// error
+
+
+2d  array
+_______________
+2d array is collection of 1d array.
+How to declare 2d array
+_______________________
+
+syntax
+_________
+
+datatype  arrname[][];
+
+or
+datatype[][]  arrname;
+or
+datatype    [][]arrname;
+
+
+How to create 2d array memory or instatntion of 2d array
+_________________________________________________________
+arrname=new datatype[r][c];
+
+r->collection of 1d array
+c->  each 1d array no of elements
+
+
+How to initlize 2d array
+________________________
+arrname[index][index]=element;
+.
+.
+.
+
+initlize in  single line
+___________________________
+
+datatype arrname[][]={list of elements};
+
+
+
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]; //2d array declartion
+			 arr=new int[2][3]; //2d array insttanion
+			 arr[0][0]=10; //2d array initlization
+			 arr[0][1]=20;
+			 arr[0][2]=30;
+			 arr[1][0]=40;
+			 arr[1][1]=50;
+			 arr[1][2]=60;
+			 //2d array display
+			 int i,j;
+			 for(i=0;i<2;i++) 
+			 {
+			 	for(j=0;j<3;j++)
+			 	{
+			 		System.out.print(arr[i][j]+"\t");
+			 	}
+			 	System.out.println();
+			 }        	 
+		 }
+}
+
+o/p:
+10      20      30
+40      50      60
+	
+
+
+
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30},{40,50,60}};//2 darray initlization in single line
+			 int i,j;
+			 for(i=0;i<2;i++)
+			 {
+			 	for(j=0;j<3;j++)
+			 	{
+			 		System.out.print(arr[i][j]+"\t");
+			 	}
+			 	System.out.println();
+			 }        	 
+		 }
+}
+
+o/p:
+10      20      30
+40      50      60
+
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30,35},{40,50,60,65},{70,80,90,95}};//2 darray initlization in single line
+			 int i,j;
+			 for(i=0;i<3;i++)
+			 {
+			 	for(j=0;j<4;j++)
+			 	{
+			 		System.out.print(arr[i][j]+"\t");
+			 	}
+			 	System.out.println();
+			 }        	 
+		 }
+}
+
+
+o/p:
+10      20      30      35
+40      50      60      65
+70      80      90      95
+	
+
+
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30,35},{40,50,60,65},{70,80,90,95}};//2 darray initlization in single line
+			 int i,j;
+			 for(i=0;i<arr.length;i++)
+			 {
+			 	for(j=0;j<arr[i].length;j++)
+			 	{
+			 		System.out.print(arr[i][j]+"\t");
+			 	}
+			 	System.out.println();
+			 }        	 
+		 }
+}
+
+
+o/p:
+
+10      20      30      35
+40      50      60      65
+70      80      90      95
+
+
+jagged array :
+every row  no of element differnt
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {	
+			 int arr[][]={{10,20},{40,50,60,65},{70,80,90}};//2 darray initlization in single line
+			 int i,j;
+			 for(i=0;i<arr.length;i++)
+			 {
+			 	for(j=0;j<arr[i].length;j++)
+			 	{
+			 		System.out.print(arr[i][j]+"\t");
+			 	}
+			 	System.out.println();
+			 }        	 
+		 }
+}
+
+
+o/p:
+10 20
+40 50 60 65
+70 80 90
+
+
+display element using for each
+_________________________________
+class Test
+{
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20},{40,50,60,65},{70,80,90}};//2 darray initlization in single line
+			  
+			  for(int x[]:arr)
+			  {
+			  	 for(int y:x)
+			  	 {
+			  	 	System.out.print(y+" ");
+			  	 }
+			  	 System.out.println();
+			  } 	 
+		 }
+}
+
+10 20
+40 50 60 65
+70 80 90
+upper  traingle  (matrix nust be square)
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30},{40,50,60},{70,80,90}};//2 darray initlization in single line
+			  int i,j;
+			  for(i=0;i<arr.length;i++)
+			  {
+
+		                for(j=0;j<arr[i].length;j++)
+		                {
+		                	 if(i<=j)
+		                	 {
+		                			System.out.print(arr[i][j]+"\t");
+		                	 }
+		                	 else 
+		                	 {
+		                	 	System.out.print("\t");
+		                	 }
+					 	 
+				 	        }
+		 	        System.out.println();
+              }
+	}
+}
+
+o/p:
+10      20      30
+        50      60
+                90
+
+lower triangle
+____________
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30},{40,50,60},{70,80,90}};//2 darray initlization in single line
+			  int i,j;
+			  for(i=0;i<arr.length;i++)
+			  {
+
+		                for(j=0;j<arr[i].length;j++)
+		                {
+		                	 if(i>=j)
+		                	 {
+		                			System.out.print(arr[i][j]+"\t");
+		                	 }
+		                	 else 
+		                	 {
+		                	 	System.out.print("\t");
+		                	 }
+					 	 
+				 	        }
+		 	        System.out.println();
+              }
+	}
+}
+
+o/p:
+10
+40      50
+70      80      90
+
+
+diangole
+______________
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30},{40,50,60},{70,80,90}};//2 darray initlization in single line
+			  int i,j;
+			  for(i=0;i<arr.length;i++)
+			  {
+
+		                for(j=0;j<arr[i].length;j++)
+		                {
+		                	 if(i==j)
+		                	 {
+		                			System.out.print(arr[i][j]+"\t");
+		                	 }
+		                	 else 
+		                	 {
+		                	 	System.out.print("\t");
+		                	 }
+					 	 
+				 	        }
+		 	        System.out.println();
+              }
+	}
+}
+
+o/p:
+10
+        50
+                90
+
+	
+transpoze matrix
+__________________
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  		
+			 int arr[][]={{10,20,30},{40,50,60}};//2 darray initlization in single line
+			  int arr1[][]=new int[arr[0].length][arr.length];
+			  int i,j;
+			  for(i=0;i<arr.length;i++)
+			  {
+
+		                for(j=0;j<arr[i].length;j++)
+		                {
+		                	arr1[j][i]=  arr[i][j];
+					 	}
+              }
+              System.out.println("elements are after transposze");
+               for(i=0;i<arr1.length;i++)
+			  {
+
+		                for(j=0;j<arr1[i].length;j++)
+		                {
+		                	System.out.print(arr1[i][j]+" ");
+					 	}
+					 	System.out.println();
+              } 
+	}
+}
+elements are after transposze
+10 40
+20 50
+30 60
+
+wap take element from keyboad and display it using 2d array concept
+import java.util.Scanner;
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  	Scanner sc=new Scanner(System.in);
+			 int arr[][]=new int[2][3];
+			  int i,j;
+			  System.out.println("enter 6 elements");
+			  for(i=0;i<2;i++)
+			  {
+			  	for(j=0;j<3;j++)
+			  	{
+			  		arr[i][j]=sc.nextInt();
+			  	}
+			  }
+
+			  System.out.println("elements are ");
+			  for(i=0;i<arr.length;i++)
+			  {
+
+                for(j=0;j<arr[i].length;j++)
+                {
+                	System.out.print(arr[i][j]+"\t");
+			 	 
+		 	        }
+		 	        System.out.println();
+              }
+	}
+}
+
+enter 6 elements
+1
+5
+7
+34
+56
+89
+elements are
+1       5       7
+34      56      89
+
+import java.util.Scanner;
+class Test
+{
+      
+		 public static void main(String arg[])
+		 {
+		  	Scanner sc=new Scanner(System.in);
+		  	System.out.println("enter 2d array r and c\n");
+		  	int r=sc.nextInt();
+		  	int c=sc.nextInt();
+			 int arr[][]=new int[r][c];
+			  int i,j;
+			  System.out.println("enter "+r*c+" elements");
+			  for(i=0;i<r;i++)
+			  {
+			  	for(j=0;j<c;j++)
+			  	{
+			  		arr[i][j]=sc.nextInt();
+			  	}
+			  }
+
+			  System.out.println("elements are ");
+			  for(i=0;i<arr.length;i++)  //arr.length   write r
+			  {
+
+                for(j=0;j<arr[i].length;j++)
+                {
+                	System.out.print(arr[i][j]+"\t");
+			 	 
+		 	        }
+		 	        System.out.println();
+              }
+	}
+}
+
+
+o/p:
+C:\Users\DELL\Desktop>java Test
+enter 2d array r and c
+
+3
+4
+enter 12 elements
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+elements are
+1       2       3       4
+5       6       7       8
+9       10      11      12
