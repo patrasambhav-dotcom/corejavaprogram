@@ -1031,7 +1031,7 @@ for(i=0;i<2;i++)
 
 
 
-Scanner sc=new Scanner(Sydtem.in);
+Scanner sc=new Scanner(System.in);
 int mark[][];
 mark=new int[3][4];
 
