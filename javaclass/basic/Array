@@ -307,6 +307,7 @@ class Test
 	   a[0]=20;
 	}
 
+
 	public static void main(String arg[])
 	{
 	    int a[]={10};
@@ -565,7 +566,7 @@ class Test
 	   }
 	   System.out.println("sum  of even element="+es);
 	   System.out.println("sum of odd element="+os);
-	}
+ 	}
 }
 
 o/p:
