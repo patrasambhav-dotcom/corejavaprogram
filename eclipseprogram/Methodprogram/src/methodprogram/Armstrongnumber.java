@@ -1,0 +1,50 @@
+package methodprogram;
+import java.util.*;
+public class Armstrongnumber
+{
+	static void armstrong(int no)
+	{
+		
+		int p=0,temp,r;
+		temp=no;
+		while(temp!=0)
+		{
+			p=p+1;
+			temp=temp/10;
+		}
+		temp=no;
+		int arm=0;
+		while(temp!=0)
+		{
+			r=temp%10;
+			arm=arm+ (int)Math.pow(r, p);
+			temp=temp/10;
+			
+		}
+		if(no==arm)
+		{
+			System.out.println(no+" is a armstrong number");
+			
+		}
+		else 
+		{
+			System.out.println(no+"is not  a armstrong number");
+			
+		}
+		
+		
+	}
+
+	public static void main(String[] args) 
+	{
+		Scanner sc =new Scanner(System.in);
+		System.out.println("enter an integer");
+		int no=sc.nextInt();
+		armstrong(no);
+		
+		
+		
+
+	}
+
+}

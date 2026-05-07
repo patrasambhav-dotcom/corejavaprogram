@@ -1,0 +1,32 @@
+package project1;
+
+public class Rectangle 
+{
+	private double length;
+	private double breadth;
+
+	public Rectangle(double l,double b)
+	{
+		length=l;
+		breadth=b;
+		
+	}
+	void area()
+	{
+		System.out.println("Area of rectangle "+(length*breadth));
+	}
+	void peri()
+	{
+		System.out.println("Perimeter of rectangle "+2*(length+breadth));
+	}
+
+	public static void main(String[] args) 
+	{
+		Rectangle r=new Rectangle(6.0,5.0);
+				r.area();
+		        r.peri();
+		
+
+	}
+
+}
