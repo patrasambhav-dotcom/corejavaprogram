@@ -14,7 +14,7 @@ public class Armstrongnumber1
 	}
 	static int armstrong(int no)
 	{
-		int p=count(no);
+		int p=count(no);  
 		int arm=0,r;
 		while(no!=0)
 		{
