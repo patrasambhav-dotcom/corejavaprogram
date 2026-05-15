@@ -16,7 +16,7 @@ public class Strongnumber
 		   while(r>0)
 		   {
 			   fac=fac*r;
-			   r=r-1;
+			   r=r-1;  
 		   }
 		   
 		   s=s+fac;
@@ -44,7 +44,7 @@ public class Strongnumber
 		
 		if(check(no))
 		{
-			System.out.println( no+" is a strognumber");
+			System.out.println( no+"   is a strognumber");
 		}
 		else
 		{

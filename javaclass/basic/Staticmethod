@@ -1,0 +1,843 @@
+why static method   // class method
+_________________________
+This method releated to class . common method for all object.  share method .
+before object that method create.
+non static and other static method call another static method directly.
+
+(1)static data or (class data )  manipulation static method
+(2)private static data static method needed
+(3)private constructor    
+(4)utility class   
+
+(1)
+class A
+{
+    static int data;
+    static void show()
+    {
+        data=10;
+        System.out.println(data); //10
+    }
+}
+class Test
+{
+    public static void main(String arg[])
+    {
+          System.out.println(A.data);//0
+           A.show();
+           System.out.println(A.data);//10
+
+    }
+}
+
+
+(2)private static data not acess outside class acess only static method
+class A
+{
+   private static int data;
+    static void show()
+    {
+        data=10;
+        System.out.println(data); //10
+    }
+}
+class Test
+{
+    public static void main(String arg[])
+    {
+         
+           A.show();
+         //System.out.println(A.data);//10 error
+
+    }
+
+}
+
+(3)
+private constructor we can not create object outside class.
+
+class A
+{
+   private A()
+   {
+
+   }
+}
+class Test
+{
+    public static void main(String arg[])
+    {
+         
+        //A ob=new A(); // error
+
+    }
+
+}
+
+solution static method that class .
+
+class A
+{
+   private A()
+   {
+        System.out.println("private constructor ");
+   }
+   static void create()
+   {
+       A ob=new A();
+   }
+}
+class Test
+{
+    public static void main(String arg[])
+    {
+         //A ob=new A(); error
+        A.create();
+
+    }
+
+}
+
+o/p:
+private constructor
+
+singleton class
+___________________
+class create only one object .
+
+rule:
+private constructor
+static method
+static object refernce
+
+
+class A {
+    static A ob;             // Static variable to hold the single instance of class A
+
+    private A() {
+        // Private constructor to prevent instantiation from outside the class
+    }
+
+    static A create() {
+        if (ob == null) {
+            ob = new A();    // Object is created only once
+        }
+        return ob;           // Same object is returned every time
+    }
+
+    void show() {
+        System.out.println("show method ");
+    }
+}
+
+class Test
+{
+    public static void main(String arg[])
+    {
+       A obj=A.create();
+       A obj1=A.create();
+       System.out.println(obj == obj1);
+      obj.show();
+    }
+}
+
+
+(4) utilty class 
+
+class contain only static variable and static method that class is known as utilty class.
+That class object not reuried.
+
+prdefined utilty class
+_________________________
+Math
+Arrays
+
+class Mymath
+{
+   static int c=0;
+    static void add(int a,int b)
+    {
+       System.out.println("sum="+(a+b));
+    }
+    static int mult(int a,int b)
+    {
+        return a*b;
+    }
+}
+
+class Test
+{
+    public static void main(String arg[])
+    {
+        Mymath.add(10,20);
+        System.out.println(Mymath.mult(5,4));
+         System.out.println(Mymath.c);
+         Systemout.println(Math.pow(2,3));
+    }
+}
+
+
+
+why nonstatic method   // instance  method //object method
+____________________________________________________________________
+A non-static method (also called instance method) belongs to the object of the class, not to the class itself.
+
+
+Key Points
+Feature               Non-Static Method
+Belongs to  Object (Instance)
+Access to Instance Variables    ✅ Yes
+Access to Static Variables  ✅ Yes
+Requires Object Creation    ✅ Yes
+Used When   Behavior varies per object
+
+Reasons to Use Non-Static (Instance) Methods
+To access or modify instance (non-static) variables
+
+To perform object-specific behavior
+
+To follow real-world object behavior modeling
+
+To override in inheritance (polymorphism)
+
+(1) Accessing Instance Variables
+class Student {
+    String name;  // instance variable
+
+    void setName(String n)          //instance method
+     {
+        name = n;
+    }
+
+    void show()                            //instance method
+    {
+        System.out.println("Name: " + name);
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.setName("Amit");
+        s1.show();  // Output: Name: Amit
+    }
+}
+
+Here, each object has its own name. So we need non-static methods to work with object-specific data.
+
+
+
+(2) Object-Specific Behavior
+
+
+class Circle {
+    double radius;
+
+    Circle(double r) {
+        radius = r;
+    }
+
+    double area() {
+        return 3.14 * radius * radius;
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Circle c1 = new Circle(3);
+        Circle c2 = new Circle(5);
+
+        System.out.println(c1.area());  // Output: 28.26
+        System.out.println(c2.area());  // Output: 78.5
+    }
+}
+Each Circle object has a different radius, so the area() method must be non-static
+
+(3) we can acess private instance outside class requried instance method
+class A
+{
+    private int x;
+    A()
+    {
+      x=10;
+    }
+    int getX()
+    {
+        return x;
+    }
+
+}
+class Test
+{
+      publc static void main(String arg[])
+      {
+         A ob=new A();
+         System.out.println(ob.getX());
+      }
+}
+
+Static vs Non-Static Methods – Quick Comparison
+Feature             Static Method        Non-Static Method
+Belongs to              Class                           Object
+Objectrequired       ❌ No                      ✅ Yes
+Accesinstance var      ❌ No                    ✅ Yes
+Access static var        ✅ Yes                ✅ Yes
+Common use case Utility, Singleton         Object-specific behavior
+
+
+both static and non static method and variable  example
+_____________________________________
+
+class Employee {
+    static String company = "ABC Ltd";  // shared by all
+    String name;
+
+    Employee(String name) {
+        this.name = name;
+    }
+
+    void show() {
+        System.out.println(name + " works at " + company);
+    }
+
+    static void changeCompany(String c) {
+        company = c;
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Ravi");
+        Employee e2 = new Employee("Kiran");
+
+        e1.show();  // Ravi works at ABC Ltd
+        e2.show();  // Kiran works at ABC Ltd
+
+        Employee.changeCompany("XYZ Ltd");
+
+        e1.show();  // Ravi works at XYZ Ltd
+        e2.show();  // Kiran works at XYZ Ltd
+    }
+}
+
+
+
+In Java, variables are classified based on their scope, lifetime, and where they are declared.
+
+types of variable in java
+_______________________________
+
+Types of Variables in Java:
+1. Local Variable  
+2. Instance Variable  
+3. Static (Class) Variable  
+4. Parameter Variable /local variable
+
+
+datatype variablename;
+
+class classname
+{
+    datatype variablename;    //instance variable   object create   
+    static datatype variablename;  //class variable only once 
+    classname()
+    {
+       datatype variablename;  //local variable
+    }
+    retyrntype methodname(datatype variablename)
+    {
+        datatype variablename //local variable
+    }
+}
+
+ 1. Local Variable
+Declared inside a method, constructor, or block.
+
+Created when method is called, destroyed after method ends.
+
+Not accessible outside the method.
+
+class Demo {
+    void display() {
+        int localVar = 10;  // Local variable
+        System.out.println("Local variable: " + localVar);
+    }
+    public static void main(String arg[])
+    {
+      Demo d=new Demo();
+      d.display();
+      
+    }
+}
+
+
+2. Parameter Variable
+Passed as an argument to a method or constructor.
+
+Treated like a local variable.
+class Demo {
+    void sum(int a, int b) {  // a and b are parameter variables
+        int result = a + b;
+        System.out.println("Sum: " + result);
+    }
+      public static void main(String arg[])
+    {
+      Demo d=new Demo();
+      d.sum(10,20);
+    }
+}
+
+
+
+
+3. Instance Variable
+Declared inside the class but outside any method or constructor.
+
+Also called non-static variable.
+
+Each object has its own copy.
+
+
+class Demo {
+    int instanceVar = 20;  // Instance variable
+
+    void show() {
+        System.out.println("Instance variable: " + instanceVar);
+    }
+}
+
+
+
+
+Example:
+
+ class X
+ {
+    int a;  //instance variable
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+          X ob=new X();
+          System.out.println(ob.a);
+           
+
+        }
+}
+
+
+
+o/p:
+0
+
+
+ class X
+ {
+    int a;  //instance variable
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+          X ob=new X();
+          System.out.println(ob.a);
+          X obj=new X();
+          System.out.println(obj.a);
+          ob.a=10;
+          obj.a=20;
+           System.out.println(ob.a+" "+obj.a);
+           
+
+        }
+}
+
+
+
+o/p:
+0
+0
+10 20
+
+
+ class X
+ {
+    int a;  //instance variable
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+         
+          System.out.println(X.a);
+        
+           
+
+        }
+}
+
+o/p:
+Test.java:14: error: non-static variable a cannot be referenced from a static context
+                  System.out.println(X.a);
+                                      ^
+1 error
+
+
+instance variable access static area must be required object.
+
+
+
+class variable:
+________________
+
+3. Static (Class) Variable
+Declared with the static keyword.
+
+Shared among all objects.
+
+Loaded only once at class loading time.
+
+class Demo {
+    static int staticVar = 30;  // Static variable
+
+    static void display() {
+        System.out.println("Static variable: " + staticVar);
+    }
+    public static void main(String arg[])
+    {
+        display();
+    }
+}
+
+
+
+
+
+
+ class X
+ {
+    static int a;  
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+         
+          System.out.println(X.a);
+        
+           
+
+        }
+}
+
+o/p:0
+
+
+
+
+ class X
+ {
+    static int a;  
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+         
+          System.out.println(X.a); //0
+          X ob=new X();
+          System.out.println(ob.a); //0
+          ob.a=10;
+          System.out.println(X.a); //10
+            System.out.println(ob.a); //10
+           
+
+        }
+}
+
+o/p:
+0
+0
+10
+10
+
+
+
+ class X
+ {
+    static int a;  
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+        
+          X ob=new X();
+          X ob1=new X();
+          ob.a=10;
+          ob1.a=30;
+          ob1.a=ob.a+ob1.a;
+          System.out.println(ob.a+"  "+ob1.a+"  "+X.a);
+           
+
+        }
+}
+
+
+
+o/p:
+60  60  60
+
+
+
+ class X
+ {
+     int a;  
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+        
+          X ob=new X();
+          X ob1=new X();
+          ob.a=10;
+          ob1.a=30;
+          ob1.a=ob.a+ob1.a;
+          System.out.println(ob.a+"  "+ob1.a);
+         // System.out.println(X.a); error
+           
+
+        }
+}
+
+
+o/p:
+10 40
+
+
+differnce between class variable and instance variable
+_____________________________________________________
+ class X
+ {
+    static  int a; 
+     int b; 
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+          X ob=new X();
+          X ob1=new X();
+         ob.a=5;
+         ob.b=7;
+         ob1.a=10;
+         ob1.b=20;
+         System.out.println(ob.a+" "+ob.b); // 10  7
+         System.out.println(ob1.a+" "+ob1.b);//10 20
+           
+
+        }
+}
+
+
+
+o/p:
+10 7
+10 20
+
+
+ class X
+ {
+    private static  int a; 
+    private  int b; 
+    X()
+    {
+           ++a;
+           ++b;
+    }
+       void show()
+       {
+        System.out.println(a+" "+b);
+       }
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+          X ob=new X();
+          X ob1=new X();
+         X ob2=new X();
+         ob.show();
+         ob1.show();
+         ob2.show();
+
+        }
+}
+
+
+
+o/p:
+3 1
+3 1
+3 1
+
+
+ class X
+ {
+    private static  int a; 
+    private  int b; 
+    X()
+    {
+           ++a;
+           ++b;
+    }
+       void show()
+       {
+        System.out.println(a+" "+b);
+       }
+
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+          X ob=new X();
+          ob.show();
+          X ob1=new X();
+           ob1.show();
+         X ob2=new X();
+         
+        
+         ob2.show();
+
+        }
+}
+o/p:
+1  1
+2 1
+3 1
+
+
+
+
+//count no of object
+_______________________________
+ class X
+ {
+    static  int a; 
+     
+    X()
+    {
+           ++a;
+         
+    }
+       
+ }
+
+ class Test
+{
+    
+        public static void main(String arg[])
+        {
+            
+          X ob=new X();
+        
+          X ob1=new X();
+
+         X ob2=new X();
+         System.out.println(" no of object="+X.a);
+
+        }
+}
+
+
+
+
+
+
+| Type      | Declared Inside           | Scope               | Lifetime           |
+| --------- | ------------------------- | ------------------- | ------------------ |
+| Local     | Method / Constructor      | Within method/block | During method call |
+| Instance  | Inside class (non-static) | Per object          | Till object lives  |
+| Static    | Inside class (static)     | Shared across class | Till class loaded  |
+| Parameter | In method signature       | Within method only  | During method call |
+
+
+class Demo {
+    int instanceVar = 10;          // ✅ Instance Variable (non-static, object-specific)
+    static int staticVar = 20;     // ✅ Static Variable (class-level, shared)
+
+    Demo() {
+        int constructorVar = 30;   // ✅ Local Variable (constructor scope)
+        System.out.println("Constructor Var: " + constructorVar);
+    }
+
+    void show(int paramVar) {      // ✅ Parameter Variable (method parameter)
+        int localVar = 40;         // ✅ Local Variable (method scope)
+        System.out.println("Instance: " + instanceVar);
+        System.out.println("Static: " + staticVar);
+        System.out.println("Parameter: " + paramVar);
+        System.out.println("Local: " + localVar);
+    }
+}
+
+
+class Test {
+    public static void main(String[] args) {
+        Demo d = new Demo();         // Constructor executes
+        d.show(50);                  // Passing 50 as parameter variable
+    }
+}
+
+
+Constructor Var: 30
+Instance: 10
+Static: 20
+Parameter: 50
+Local: 40
+
+VariableType         Name                  Where Declared                              Scope
+Instance Variable   instanceVar      In class,     non-static                    Per object
+Static Variable    staticVar           In class, with static                       Shared in class
+Local Variable    constructorVarlocalVar    Inside constructor / method Only      in that block
+Parameter Variable  paramVar          In method parameter                           Only inside method
