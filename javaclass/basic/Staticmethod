@@ -795,7 +795,7 @@ _______________________________
 
 
 
-| Type      | Declared Inside           | Scope               | Lifetime           |
+| Type      | Declared Inside           | Scope            |Lifetime   |            |
 | --------- | ------------------------- | ------------------- | ------------------ |
 | Local     | Method / Constructor      | Within method/block | During method call |
 | Instance  | Inside class (non-static) | Per object          | Till object lives  |
