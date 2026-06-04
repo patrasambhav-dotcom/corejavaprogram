@@ -1,0 +1,176 @@
+casting 
+______
+class P
+{
+	void f1()
+	{
+        sop("P f1");
+	}
+	void f3()
+	{
+			sop("P f3");
+	}
+}
+class C extends P
+{
+	void f2()
+	{
+	     sop("C f2");
+	}
+	       //overriding method
+			void f1()
+			{
+		        sop("C f1");
+			}
+	
+}
+
+parent refence hold parent object.it can acess only parent data method .
+not acess child data and method.
+P  ob=new P();
+ob.f1();  //p f1
+ob.f2(); // error
+
+child refence hold child object.it can acess both parent data ,method and child data ,method.
+C ob=new C();
+ob.f1();  //C f1
+ob.f2(); // C f2
+ob.f3(); //P f3
+
+
+parent refence hold child object (upcasting//     //).it can acess only parent data and method that are inheritance child class and it acess overidding  method. not acess child other method and data.
+P  ob=new C();  //upcasting //widening 
+ob.f1();  //C f1
+ob.f2(); // error
+ob.f3(); //P f3
+
+When the reference variable of superclass refers to the object of subclass, it is known as upcasting in Java. In other words, when the subclass object type is converted into the superclass type, this type of conversion is called upcasting. It is also called widening in Java.
+
+
+
+child refernce never hold parent object .
+
+C ob=new P(); // erorr
+
+downcasting
+_____
+
+without upcasting there is no downcasting
+
+
+P  ob=new C();  //upcasting //widening 
+
+C obj=(C)ob; //downcasting//narrwing 
+obj.f1();  //C f1
+obj.f2(); // C f2
+ob.f3(); //P f3
+
+
+class A
+{
+	int x;
+	A(int x)
+	{
+      this.x=x;
+	}
+	void show()
+	{
+		System.out.println(x);
+	}
+}
+class B extends A 
+{
+	int y;
+	B(int x,int y)
+	{
+
+		super(x);
+		System.out.println(y);
+      this.y=y;
+	}
+	void disp()
+	{
+		System.out.println("in disp"+x);
+		System.out.println("i disp" +y);
+	}
+}
+
+class Test
+{
+	public static void main(String arg[])
+	{
+		A ob=new B(10,20);//upcasting
+		ob.show();
+		//ob.disp(); error
+	//B obj=(B)ob;
+	//obj.disp();
+	//obj.show();
+	}
+}
+
+o/p:
+20
+10
+
+instanceof 
+______
+
+it is a operator .
+
+class A
+{
+
+}
+class B extends A 
+{
+	
+}
+class C extends B
+{
+
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		A ob=new B();
+		System.out.println(ob instanceof B);
+
+		System.out.println(ob instanceof A);
+		System.out.println(ob instanceof Object);
+		System.out.println(ob instanceof C);
+}
+}
+o/p:
+true
+true
+true
+false
+
+
+class A
+{
+
+}
+class B 
+{
+	
+}
+class C 
+{
+
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		Object ob=new B();
+		Object obj=new A();
+		A obj1=new A();
+		System.out.println(obj1 instanceof A);
+		//System.out.println(obj1 instanceof B); error
+		
+}
+}
+o/p:
+true
