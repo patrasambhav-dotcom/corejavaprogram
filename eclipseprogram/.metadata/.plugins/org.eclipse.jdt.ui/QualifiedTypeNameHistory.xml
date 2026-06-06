@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="inheri1.C"/>
+    <fullyQualifiedTypeName name="inheri1.B"/>
+    <fullyQualifiedTypeName name="Rectangle"/>
+    <fullyQualifiedTypeName name="java.awt.Rectangle"/>
+    <fullyQualifiedTypeName name="classobject.Stu"/>
 </qualifiedTypeNameHistroy>
