@@ -1,0 +1,2358 @@
+Object
+________
+
+toString()
+equals()
+hashcode()
+getclass()
+finalize()
+
+clone(): to create duplicate object
+
+class Test  implements Cloneable
+{
+    int a,b;
+    Test(int a,int b)
+    {
+      this.a=a;
+      this.b=b;
+    }
+	public static void main(String arg[]) throws Exception
+	{
+		 Test t=new Test(3,5);
+		Test t1=(Test)t.clone();
+		
+		 System.out.println(t.a+" "+t.b);
+		 System.out.println(t1.a+" "+t1.b);
+		 t.a=7;
+		 t.b=8;
+		 		 System.out.println(t.a+" "+t.b);
+		 System.out.println(t1.a+" "+t1.b);
+	}
+}
+
+o/P:
+C:\Users\HP\Desktop>java Test
+3 5
+3 5
+7 8
+3 5
+
+Exception handling
+________________________
+
+
+class Test  
+{
+    
+	public static void main(String arg[]) 
+	{
+		 System.out.println("A");
+		 System.out.println(10/2);
+		 System.out.println("B");
+	}
+}
+
+
+o/p:
+A
+5
+B
+
+
+class Test  
+{
+    
+	public static void main(String arg[]) 
+	{
+		 System.out.println("A");
+		 System.out.println(10/0);
+		 System.out.println("B");
+	}
+}
+C:\Users\HP\Desktop>javac 1.java
+
+C:\Users\HP\Desktop>java Test
+A
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at Test.main(1.java:7)
+
+what is exception
+_________________
+A unwated event that distrube normal flow of execution is called is exception.
+
+exception handling
+___________________
+
+it provides alternate way to execute rest of the program.
+
+it is possible  using some keyword
+
+try
+catch
+finally
+throw
+throws
+
+
+exception are 2 types
+______________________
+(1)checked exception
+(2)uncheked exception
+
+checked exception
+___________________
+the exception is checked in complile time 
+
+
+unchecked  exception
+______________________
+the exception at runtime.
+
+
+
+
+
+try 
+{
+	 risk code
+}
+catch(Exceptioname e)
+{
+	handle code
+}
+
+
+class Test  
+{
+    
+	public static void main(String arg[]) 
+	{
+		 System.out.println("A");
+		 try 
+		 {
+		 	   System.out.println(10/0);
+		 	   System.out.println("try end");
+		 }
+		 catch(ArithmeticException e)
+		 {
+		 	   System.out.println("exception handle  d never zero");
+		 }
+		 System.out.println("B");
+		 System.out.println("main end");
+	}
+}
+
+o/p:
+A
+exception handle  d never zero
+B
+main end
+
+
+
+class Test  
+{
+    
+	public static void main(String arg[]) 
+	{
+		 System.out.println("A");
+		 try 
+		 {
+		 	   System.out.println(10/2);
+		 	   System.out.println("try end");
+		 }
+		 catch(ArithmeticException e)
+		 {
+		 	   System.out.println("exception handle  d never zero");
+		 }
+		 System.out.println("B");
+		 System.out.println("main end");
+	}
+}
+
+C:\Users\HP\Desktop>javac 1.java
+
+C:\Users\HP\Desktop>java Test
+A
+5
+try end
+B
+main end
+
+C:\Users\HP\Desktop>
+
+
+
+class Test  
+{
+    
+	public static void main(String arg[]) 
+	{
+		 System.out.println("A");
+		 try 
+		 {
+		 	   System.out.println(10/0);  
+		 	   System.out.println("try end");
+		 }
+		 catch(NullPointerException e)
+		 {
+		 	   System.out.println("exception handle  d never zero");
+		 }
+		 System.out.println("B");
+		 System.out.println("main end");
+	}
+}
+
+
+
+o/p:
+
+A
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at Test.main(1.java:9)
+
+class Test  
+{
+    
+	public static void main(String arg[]) 
+	{
+		 System.out.println("A");
+		 try 
+		 {
+		 	   System.out.println(10/0);  
+		 	   System.out.println("try end");
+		 }
+		 catch(Exception e)
+		 {
+		 	   System.out.println("exception handle  d never zero");
+		 }
+		 System.out.println("B");
+		 System.out.println("main end");
+	}
+}
+
+o/p:
+C:\Users\HP\Desktop>java Test
+A
+exception handle  d never zero
+B
+main end
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	    System.out.println("A");
+         try 
+         {
+         	System.out.println(10/0);
+         	System.out.println("try end ");
+         }
+         catch(ArithmeticException e)
+         {
+         	   System.out.println(e);
+         	   System.out.println("Exception caught");
+         }
+	    
+	    System.out.println("program end");
+	}
+}
+
+o/p:
+A
+java.lang.ArithmeticException: / by zero
+Exception caught
+program end
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	    System.out.println("A");
+         try 
+         {
+         	System.out.println(10/2);
+         	System.out.println("try end ");
+         }
+         catch(ArithmeticException e)
+         {
+         	   System.out.println(e);
+         	   System.out.println("Exception caught");
+         }
+	    
+	    System.out.println("program end");
+	}
+}
+
+
+o/p:
+A
+5
+try end
+program end
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	    System.out.println("A");
+         try 
+         {
+         	System.out.println(10/2);
+         	System.out.println("try end ");
+         }
+         catch(NullPointerException e)
+         {
+         	   System.out.println(e);
+         	   System.out.println("Exception caught");
+         }
+	    
+	    System.out.println("program end");
+	}
+}
+
+
+o/p:
+A
+5
+try end
+program end
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	    System.out.println("A");
+         try 
+         {
+         	System.out.println(10/0);
+         	System.out.println("try end ");
+         }
+         catch(NullPointerException e)
+         {
+         	   System.out.println(e);
+         	   System.out.println("Exception caught");
+         }
+	    
+	    System.out.println("program end");
+	}
+}
+
+o/p:
+A
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at Test.main(1.java:8)
+
+ class Test
+{
+	public static void main(String arg[])
+	{
+	    System.out.println("A");
+         try 
+         {
+         	System.out.println(10/0);
+         	System.out.println("try end ");
+         }
+         catch(Exception e)
+         {
+         	   System.out.println(e);
+         	   System.out.println("Exception caught");
+         }
+	    
+	    System.out.println("program end");
+	}
+}
+
+
+o/p:
+A
+java.lang.ArithmeticException: / by zero
+Exception caught
+program end
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={10,7,8};
+         try 
+         {
+	    System.out.println(arr[2]);
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println("exception caught "+e);
+		}
+	    System.out.println("program end");
+	}
+}
+
+
+o/p:
+8
+program end 
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={10,7,8};
+         try 
+         {
+	    System.out.println(arr[3]);
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println("exception caught "+e);
+		}
+	    System.out.println("program end");
+	}
+}
+
+
+o/p:
+C:\Users\HP\Desktop>java Test
+exception caught java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+program end
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]=null;
+        System.out.println(arr.length);
+	}
+}
+Exception in thread "main" java.lang.NullPointerException
+        at Test.main(1.java:6)
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   String s="hi";
+	   System.out.println(s.charAt(0));
+	   System.out.println(s.charAt(2));
+	}
+}
+
+h
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 2
+        at java.base/java.lang.StringLatin1.charAt(StringLatin1.java:47)
+        at java.base/java.lang.String.charAt(String.java:693)
+        at Test.main(1.java:7)
+class Test
+{
+	public static void main(String arg[])
+	{
+	   String s="123";
+	   int no=Integer.parseInt(s);
+	   System.out.println(no);
+	}
+}
+
+
+o/p:
+123
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   String s="one";
+	   int no=Integer.parseInt(s);
+	   System.out.println(no);
+	}
+}
+
+o/p:
+Exception in thread "main" java.lang.NumberFormatException: For input string: "one"
+        at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.base/java.lang.Integer.parseInt(Integer.java:652)
+        at java.base/java.lang.Integer.parseInt(Integer.java:770)
+        at Test.main(1.java:6)
+class Test
+{
+	public static void main(String arg[])
+	{
+	   String s="one";
+	   int no=Integer.parseInt(s);
+	   System.out.println(no);
+	}
+}
+
+try with multiple catch
+____________________________
+
+
+try 
+{
+
+}
+catch(Exceptionname e)
+{
+
+}
+catch(Exceptionname e)
+{
+	
+}
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={10,5,8};
+	   try 
+	   {
+	   	 System.out.println(arr[2]/2);
+	   }
+	   catch(ArrayIndexOutOfBoundsException e)
+	   {
+	   	System.out.println("exception caught 1 "+e);
+	   }
+	   catch(ArithmeticException e)
+	   {
+	   	 System.out.println("exception caught 2 "+e);
+	   }
+	   
+	}
+}
+
+
+
+o/p:
+4
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={10,5,8};
+	   try 
+	   {
+	   	 System.out.println(arr[2]/2);
+	   }
+	   catch(Exception e)
+	   {
+	   	System.out.println("exception caught 1 "+e);
+	   }
+	   catch(ArithmeticException e)
+	   {
+	   	 System.out.println("exception caught 2 "+e);
+	   }
+	   
+	}
+}
+
+C:\Users\HP\Desktop>javac 1.java
+1.java:14: error: exception ArithmeticException has already been caught
+           catch(ArithmeticException e)
+           ^
+1 error
+
+C:\Users\HP\Desktop
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={10,5,8};
+	   try 
+	   {
+	   	 System.out.println(arr[2]/2);
+	   }
+	   
+	   catch(ArithmeticException e)
+	   {
+	   	 System.out.println("exception caught arith "+e);
+	   }
+	   catch(Exception e)
+	   {
+	   	System.out.println("exception caught all type "+e);
+	   }
+	}
+}
+
+
+o/p:
+4
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	   int arr[]={10,5,8};
+	   try 
+	   {
+	   	 System.out.println(arr[3]/2);
+	   }
+	   
+	   catch(ArithmeticException e)
+	   {
+	   	 System.out.println("exception caught arith "+e);
+	   }
+	   catch(Exception e)
+	   {
+	   	System.out.println("exception caught all type "+e);
+	   }
+	}
+}
+
+
+o/p:
+exception caught all type java.lang.ArrayIndexOutOfBoundsException: Index 3 out of b
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	 
+	   try 
+	   {
+	   	 System.out.println(10/2);
+	   }
+	   finally
+	   {
+	   	  System.out.println("must executed ");
+	   }
+	   
+	   System.out.println("program end");
+	}
+}
+
+
+o/p:
+5
+must executed
+program end
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	 
+	   try 
+	   {
+	   	 System.out.println(10/0);
+	   }
+	   finally
+	   {
+	   	  System.out.println("must execute");
+	   }
+	   
+	   System.out.println("program end");
+	}
+}
+
+must execute
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at Test.main(1.java:8)
+
+ class Test
+{
+	public static void main(String arg[])
+	{
+	 
+	   try 
+	   {
+	   	 System.out.println(10/0);
+	   }
+	   catch(Exception e)
+	   {
+	   	 System.out.println("exception caught "+e);
+	   }
+	   finally
+	   {
+	   	  System.out.println("must execute");
+	   }
+	   
+	   System.out.println("program end");
+	}
+}
+exception caught java.lang.ArithmeticException: / by zero
+must execute
+program end
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	 
+	   try 
+	   {
+	   	 System.out.println(10/2);
+	   }
+	   catch(Exception e)
+	   {
+	   	 System.out.println("exception caught "+e);
+	   }
+	   finally
+	   {
+	   	  System.out.println("must execute");
+	   }
+	   
+	   System.out.println("program end");
+	}
+}
+
+o/p:
+5
+must execute
+program end
+
+
+
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+	 
+	   try 
+	   {
+	   	  if(true)
+	   	  {
+	   	  	return ;
+	   	  }
+	   	 System.out.println(10/0);
+	   	 
+	   }
+	   catch(Exception e)
+	   {
+	   	 System.out.println("exception caught "+e);
+	   }
+	   finally
+	   {
+	   	  System.out.println("must execute");
+	   }
+	   
+	   System.out.println("program end");
+	}
+}
+
+o/p:
+must execute
+
+
+throw  and throws 
+___________________
+
+throw : it is used to create exception explictly.
+         inside method and constructor
+
+throws :responsblity return to the caller method 
+		method defination write side .  
+
+) try: To maintain risky code. 
+2) catch: To maintain handling code. 
+3) finally: To maintain cleanup code. 
+4) throw: To handover our created exception object to the JVM manually. 
+5) throws: To delegate responsibility of exception handling to the caller method.
+
+
+
+
+class X 
+{
+	 static 
+	 {
+	 	System.out.println("static block x");
+	 }
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+	    Class.forName("x");
+	}
+}
+C:\Users\HP\Desktop>javac 1.java
+1.java:13: error: unreported exception ClassNotFoundException; must be caught or declared to be thrown
+            Class.forName("x");
+                         ^
+1 error
+
+ must be caught    try catch  
+
+class X 
+{
+	 static 
+	 {
+	 	System.out.println("static block x");
+	 }
+}
+class Test
+{
+	public static void main(String arg[])throws ClassNotFoundException
+	{
+	    Class.forName("X");
+	}
+}
+
+o/p: 
+static block x
+
+
+
+class X 
+{
+	 static 
+	 {
+	 	System.out.println("static block x");
+	 }
+}
+class Test
+{
+	public static void main(String arg[])throws ClassNotFoundException
+	{
+	    Class.forName("Y");
+	}
+}
+
+C:\Users\HP\Desktop>javac 1.java
+
+C:\Users\HP\Desktop>java Test
+Exception in thread "main" java.lang.ClassNotFoundException: Y
+        at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+        at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+        at java.base/java.lang.Class.forName0(Native Method)
+        at java.base/java.lang.Class.forName(Class.java:315)
+        at Test.main(1.java:12)
+
+class X 
+{
+	 static 
+	 {
+	 	System.out.println("static block x");
+	 }
+}
+class Test
+{
+	 static void show()throws ClassNotFoundException
+	 {
+	 	Class.forName("Y");
+	 }
+	public static void main(String arg[])
+	{
+		  try 
+		  {
+		  	show();
+		  }
+	      catch(Exception e)
+	      {
+	      	System.out.println("exception caught "+e);
+	      }
+	}
+}
+
+o/p:
+
+exception caught java.lang.ClassNotFoundException: Y
+
+
+
+class Test
+{
+	
+	public static void main(String arg[])
+	{
+		throw new ArithmeticException();  
+	}
+}
+
+
+Exception in thread "main" java.lang.ArithmeticException
+        at Test.main(1.java:7) 
+
+import java.util.Scanner;
+class NegativeNumberException extends RuntimeException
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+	check(no);
+     System.out.println("main end ");
+	}
+
+}
+
+C:\Users\DELL\Desktop\java program>javac 1.java
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+5
++ve
+main end
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+-2
+Exception in thread "main" NegativeNumberException: negative number
+        at Test.check(1.java:20)
+        at Test.main(1.java:28)
+
+
+
+import java.util.Scanner;
+class NegativeNumberException extends RuntimeException
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+	try 
+	{
+		check(no);
+	}
+	catch(NegativeNumberException e)
+	{
+		System.out.println(e);
+	}
+	
+     System.out.println("main end ");
+	}
+
+}
+
+o/p:
+
+enter a no
+-2
+NegativeNumberException: negative number
+main end
+
+
+
+How to create checked Exception
+____________________________________
+import java.util.Scanner;
+class NegativeNumberException extends Exception
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+
+		check(no);
+	
+	
+	
+	
+     System.out.println("main end ");
+	}
+
+}
+
+
+Users\DELL\Desktop\java program>javac 1.java
+1.java:20: error: unreported exception NegativeNumberException; must be caught or declared to be thrown
+                throw new NegativeNumberException("negative number");
+                ^
+1 error
+
+
+
+
+import java.util.Scanner;
+class NegativeNumberException extends Exception
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)throws NegativeNumberException 
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])throws NegativeNumberException 
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+
+		check(no);
+	
+	
+	
+	
+     System.out.println("main end ");
+	}
+
+}
+
+o/p:
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+5
++ve
+main end
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+-2
+Exception in thread "main" NegativeNumberException: negative number
+        at Test.check(1.java:20)
+        at Test.main(1.java:29)
+
+
+import java.util.Scanner;
+class NegativeNumberException extends Exception
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)throws NegativeNumberException 
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+         try 
+         {
+         	check(no);
+         }
+		 catch(NegativeNumberException e)
+		 {
+		 	System.out.println(e);
+		 }
+     System.out.println("main end ");
+	}
+
+}
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+5
++ve
+main end
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+-2
+NegativeNumberException: negative number
+main end
+
+
+
+
+
+
+multthreading
+____________
+
+class Test
+{
+	public static void main(String arg[])
+	{
+		 System.out.println(Thread.currentThread().getName());
+		 Thread th=Thread.currentThread();
+		 System.out.println(th.getName());
+	}
+}
+
+o/p:
+main
+main  
+
+How to create thread 
+______________________
+we can create thread 2 way 
+(1)extend Thread class
+(2)implements Runnable interface 
+
+C:\Users\DELL\Desktop\java program>javap java.lang.Runnable
+Compiled from "Runnable.java"
+public interface java.lang.Runnable {
+  public abstract void run();
+}
+
+C:\Users\DELL\Desktop\java program>javap java.lang.Thread
+Compiled from "Thread.java"
+public class java.lang.Thread implements java.lang.Runnable {
+  java.lang.ThreadLocal$ThreadLocalMap threadLocals;
+  java.lang.ThreadLocal$ThreadLocalMap inheritableThreadLocals;
+  volatile java.lang.Object parkBlocker;
+  public static final int MIN_PRIORITY;   1
+  public static final int NORM_PRIORITY;  5
+  public static final int MAX_PRIORITY;  10
+  long threadLocalRandomSeed;
+  int threadLocalRandomProbe;
+  int threadLocalRandomSecondarySeed;
+  void blockedOn(sun.nio.ch.Interruptible);
+  public static native java.lang.Thread currentThread();
+  public static native void yield();
+  public static native void sleep(long) throws java.lang.InterruptedException;
+  public static void sleep(long, int) throws java.lang.InterruptedException;
+  protected java.lang.Object clone() throws java.lang.CloneNotSupportedException;
+  public java.lang.Thread();
+  public java.lang.Thread(java.lang.Runnable);
+  java.lang.Thread(java.lang.Runnable, java.security.AccessControlContext);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.Runnable);
+  public java.lang.Thread(java.lang.String);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.String);
+  public java.lang.Thread(java.lang.Runnable, java.lang.String);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String, long);
+  public synchronized void start();
+  public void run();
+  public final void stop();
+  public final synchronized void stop(java.lang.Throwable);
+  public void interrupt();
+  public static boolean interrupted();
+  public boolean isInterrupted();
+  public void destroy();
+  public final native boolean isAlive();
+  public final void suspend();
+  public final void resume();
+  public final void setPriority(int);
+  public final int getPriority();
+  public final synchronized void setName(java.lang.String);
+  public final java.lang.String getName();
+  public final java.lang.ThreadGroup getThreadGroup();
+  public static int activeCount();
+  public static int enumerate(java.lang.Thread[]);
+  public native int countStackFrames();
+  public final synchronized void join(long) throws java.lang.InterruptedException;
+  public final synchronized void join(long, int) throws java.lang.InterruptedException;
+  public final void join() throws java.lang.InterruptedException;
+  public static void dumpStack();
+  public final void setDaemon(boolean);
+  public final boolean isDaemon();
+  public final void checkAccess();
+  public java.lang.String toString();
+  public java.lang.ClassLoader getContextClassLoader();
+  public void setContextClassLoader(java.lang.ClassLoader);
+  public static native boolean holdsLock(java.lang.Object);
+  public java.lang.StackTraceElement[] getStackTrace();
+  public static java.util.Map<java.lang.Thread, java.lang.StackTraceElement[]> getAllStackTraces();
+  public long getId();
+  public java.lang.Thread$State getState();
+  public static void setDefaultUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler);
+  public static java.lang.Thread$UncaughtExceptionHandler getDefaultUncaughtExceptionHandler();
+  public java.lang.Thread$UncaughtExceptionHandler getUncaughtExceptionHandler();
+  public void setUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler);
+  static void processQueue(java.lang.ref.ReferenceQueue<java.lang.Class<?>>, java.util.concurrent.ConcurrentMap<? extends java.lang.ref.WeakReference<java.lang.Class<?>>, ?>);
+  static {};
+}
+
+
+Thread program using extend Thread class
+___________________________________________
+step1 : your class extends Thread
+step2 : override run()  method (child thread logic )
+
+step3 : create your class object 
+
+step4 : call start() method  
+
+
+
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 System.out.println("child thread");
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		 System.out.println("main thread");
+		 MyThread th=new MyThread();
+		 th.start();
+	}
+}
+o/p:
+main thread 
+child thread 
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("child thread "+i);
+		}
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		
+		 MyThread th=new MyThread();
+		 th.start();
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("main thread "+i);
+		}
+	}
+}
+
+o/p:
+C:\Users\DELL\Desktop\java program>java Test
+main thread 1
+main thread 2
+child thread 1
+main thread 3
+main thread 4
+child thread 2
+main thread 5
+child thread 3
+child thread 4
+child thread 5
+
+
+
+
+
+Thread program using implement Runnable interface
+___________________________________________
+step1 : your class implmenets Runnable
+step2 : override run()  method (child thread logic )
+
+step3 : create your class object (Runnable type)
+
+step4 : create Thread class object 
+         inside Thread class constructor (your runnable class object refence)
+step5 : call start() method  using Thread
+  
+
+  class MyRunnable implements Runnable
+{
+	public void run()
+	{
+		 System.out.println("child thread");
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		 System.out.println("main thread");
+		 MyRunnable r=new MyRunnable();
+		 Thread th=new Thread(r);
+		 th.start();
+	}
+}
+
+
+How to check thread name and chage the thread name 
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getName());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		System.out.println(Thread.currentThread().getName());
+		 MyThread th=new MyThread();
+		 th.start();
+	}
+}
+
+o/p: 
+main
+Thread-0
+
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getName());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		Thread.currentThread().setName("ram");
+		System.out.println(Thread.currentThread().getName());
+		 MyThread th=new MyThread();
+		 th.setName("sita");
+		 th.start();
+	}
+}
+
+
+o/p: 
+ram 
+sita 
+
+
+
+class MyThread extends Thread 
+{
+	MyThread(String s)
+	{
+		super(s);
+	}
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getName());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		Thread.currentThread().setName("ram");
+		System.out.println(Thread.currentThread().getName());
+		 MyThread th=new MyThread("sita");
+		 //th.setName("sita");
+		 th.start();
+	}
+}
+
+o/p:
+ram 
+sita 
+
+
+How to acess Priority and change the Priority 
+________________________________________________
+class MyThread extends Thread 
+{
+	
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getPriority());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		
+		System.out.println(Thread.currentThread().getPriority());
+		 MyThread th=new MyThread();
+		 th.setPriority(10);
+		 //th.setPriority(Thread.MAX_PRIORITY);
+		 th.start();
+	}
+}
+
+o/p :
+5
+10
+/*
+public static final int MIN_PRIORITY;   1
+  public static final int NORM_PRIORITY;  5
+  public static final int MAX_PRIORITY;  10
+
+  */
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("child thread "+i);
+		}
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		 MyThread th=new MyThread();
+		  th.setPriority(10);
+		 th.start();
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("main thread "+i);
+		}
+	}
+}
+
+o/p: 
+main thread 1
+main thread 2
+child thread 1
+child thread 2
+child thread 3
+child thread 4
+child thread 5
+main thread 3
+main thread 4
+main thread 5
+
+import java.util.Scanner;
+class NegativeNumberException extends RuntimeException
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+	check(no);
+     System.out.println("main end ");
+	}
+
+}
+
+C:\Users\DELL\Desktop\java program>javac 1.java
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+5
++ve
+main end
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+-2
+Exception in thread "main" NegativeNumberException: negative number
+        at Test.check(1.java:20)
+        at Test.main(1.java:28)
+
+
+
+import java.util.Scanner;
+class NegativeNumberException extends RuntimeException
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+	try 
+	{
+		check(no);
+	}
+	catch(NegativeNumberException e)
+	{
+		System.out.println(e);
+	}
+	
+     System.out.println("main end ");
+	}
+
+}
+
+o/p:
+
+enter a no
+-2
+NegativeNumberException: negative number
+main end
+
+
+
+How to create checked Exception
+____________________________________
+import java.util.Scanner;
+class NegativeNumberException extends Exception
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+
+		check(no);
+	
+	
+	
+	
+     System.out.println("main end ");
+	}
+
+}
+
+
+Users\DELL\Desktop\java program>javac 1.java
+1.java:20: error: unreported exception NegativeNumberException; must be caught or declared to be thrown
+                throw new NegativeNumberException("negative number");
+                ^
+1 error
+
+
+
+
+import java.util.Scanner;
+class NegativeNumberException extends Exception
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)throws NegativeNumberException 
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])throws NegativeNumberException 
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+
+		check(no);
+	
+	
+	
+	
+     System.out.println("main end ");
+	}
+
+}
+
+o/p:
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+5
++ve
+main end
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+-2
+Exception in thread "main" NegativeNumberException: negative number
+        at Test.check(1.java:20)
+        at Test.main(1.java:29)
+
+
+import java.util.Scanner;
+class NegativeNumberException extends Exception
+{
+	NegativeNumberException(String s)
+	{
+	  super(s);
+	}
+}
+
+class Test
+{
+	static void check(int no)throws NegativeNumberException 
+	{
+	     if(no>0)
+	     {
+	       System.out.println("+ve ");
+	     }
+	     else
+	     {
+	        throw new NegativeNumberException("negative number");
+	     }
+	}
+	public static void main(String arg[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter a no ");
+	int no=sc.nextInt();
+         try 
+         {
+         	check(no);
+         }
+		 catch(NegativeNumberException e)
+		 {
+		 	System.out.println(e);
+		 }
+     System.out.println("main end ");
+	}
+
+}
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+5
++ve
+main end
+
+C:\Users\DELL\Desktop\java program>java Test
+enter a no
+-2
+NegativeNumberException: negative number
+main end
+
+
+
+
+
+
+multthreading
+____________
+
+class Test
+{
+	public static void main(String arg[])
+	{
+		 System.out.println(Thread.currentThread().getName());
+		 Thread th=Thread.currentThread();
+		 System.out.println(th.getName());
+	}
+}
+
+o/p:
+main
+main  
+
+How to create thread 
+______________________
+we can create thread 2 way 
+(1)extend Thread class
+(2)implements Runnable interface 
+
+C:\Users\DELL\Desktop\java program>javap java.lang.Runnable
+Compiled from "Runnable.java"
+public interface java.lang.Runnable {
+  public abstract void run();
+}
+
+C:\Users\DELL\Desktop\java program>javap java.lang.Thread
+Compiled from "Thread.java"
+public class java.lang.Thread implements java.lang.Runnable {
+  java.lang.ThreadLocal$ThreadLocalMap threadLocals;
+  java.lang.ThreadLocal$ThreadLocalMap inheritableThreadLocals;
+  volatile java.lang.Object parkBlocker;
+  public static final int MIN_PRIORITY;   1
+  public static final int NORM_PRIORITY;  5
+  public static final int MAX_PRIORITY;  10
+  long threadLocalRandomSeed;
+  int threadLocalRandomProbe;
+  int threadLocalRandomSecondarySeed;
+  void blockedOn(sun.nio.ch.Interruptible);
+  public static native java.lang.Thread currentThread();
+  public static native void yield();
+  public static native void sleep(long) throws java.lang.InterruptedException;
+  public static void sleep(long, int) throws java.lang.InterruptedException;
+  protected java.lang.Object clone() throws java.lang.CloneNotSupportedException;
+  public java.lang.Thread();
+  public java.lang.Thread(java.lang.Runnable);
+  java.lang.Thread(java.lang.Runnable, java.security.AccessControlContext);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.Runnable);
+  public java.lang.Thread(java.lang.String);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.String);
+  public java.lang.Thread(java.lang.Runnable, java.lang.String);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String);
+  public java.lang.Thread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String, long);
+  public synchronized void start();
+  public void run();
+  public final void stop();
+  public final synchronized void stop(java.lang.Throwable);
+  public void interrupt();
+  public static boolean interrupted();
+  public boolean isInterrupted();
+  public void destroy();
+  public final native boolean isAlive();
+  public final void suspend();
+  public final void resume();
+  public final void setPriority(int);
+  public final int getPriority();
+  public final synchronized void setName(java.lang.String);
+  public final java.lang.String getName();
+  public final java.lang.ThreadGroup getThreadGroup();
+  public static int activeCount();
+  public static int enumerate(java.lang.Thread[]);
+  public native int countStackFrames();
+  public final synchronized void join(long) throws java.lang.InterruptedException;
+  public final synchronized void join(long, int) throws java.lang.InterruptedException;
+  public final void join() throws java.lang.InterruptedException;
+  public static void dumpStack();
+  public final void setDaemon(boolean);
+  public final boolean isDaemon();
+  public final void checkAccess();
+  public java.lang.String toString();
+  public java.lang.ClassLoader getContextClassLoader();
+  public void setContextClassLoader(java.lang.ClassLoader);
+  public static native boolean holdsLock(java.lang.Object);
+  public java.lang.StackTraceElement[] getStackTrace();
+  public static java.util.Map<java.lang.Thread, java.lang.StackTraceElement[]> getAllStackTraces();
+  public long getId();
+  public java.lang.Thread$State getState();
+  public static void setDefaultUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler);
+  public static java.lang.Thread$UncaughtExceptionHandler getDefaultUncaughtExceptionHandler();
+  public java.lang.Thread$UncaughtExceptionHandler getUncaughtExceptionHandler();
+  public void setUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler);
+  static void processQueue(java.lang.ref.ReferenceQueue<java.lang.Class<?>>, java.util.concurrent.ConcurrentMap<? extends java.lang.ref.WeakReference<java.lang.Class<?>>, ?>);
+  static {};
+}
+
+
+Thread program using extend Thread class
+___________________________________________
+step1 : your class extends Thread
+step2 : override run()  method (child thread logic )
+
+step3 : create your class object 
+
+step4 : call start() method  
+
+
+
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 System.out.println("child thread");
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		 System.out.println("main thread");
+		 MyThread th=new MyThread();
+		 th.start();
+	}
+}
+o/p:
+main thread 
+child thread 
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("child thread "+i);
+		}
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		
+		 MyThread th=new MyThread();
+		 th.start();
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("main thread "+i);
+		}
+	}
+}
+
+o/p:
+C:\Users\DELL\Desktop\java program>java Test
+main thread 1
+main thread 2
+child thread 1
+main thread 3
+main thread 4
+child thread 2
+main thread 5
+child thread 3
+child thread 4
+child thread 5
+
+
+
+
+
+Thread program using implement Runnable interface
+___________________________________________
+step1 : your class implmenets Runnable
+step2 : override run()  method (child thread logic )
+
+step3 : create your class object (Runnable type)
+
+step4 : create Thread class object 
+         inside Thread class constructor (your runnable class object refence)
+step5 : call start() method  using Thread
+  
+
+  class MyRunnable  implements Runnable
+{
+	public void run()
+	{
+		 System.out.println("child thread");
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		 System.out.println("main thread");
+		 MyRunnable r=new MyRunnable();
+		 Thread th=new Thread(r);
+		 th.start();
+	}
+}
+
+
+How to check thread name and chage the thread name 
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getName());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		System.out.println(Thread.currentThread().getName());
+		 MyThread th=new MyThread();
+		 th.start();
+	}
+}
+
+o/p: 
+main
+Thread-0
+
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getName());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		Thread.currentThread().setName("ram");
+		System.out.println(Thread.currentThread().getName());
+		 MyThread th=new MyThread();
+		 th.setName("sita");
+		 th.start();
+	}
+}
+
+
+o/p: 
+ram 
+sita 
+
+
+
+class MyThread extends Thread 
+{
+	MyThread(String s)
+	{
+		super(s);
+	}
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getName());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		Thread.currentThread().setName("ram");
+		System.out.println(Thread.currentThread().getName());
+		 MyThread th=new MyThread("sita");
+		 //th.setName("sita");
+		 th.start();
+	}
+}
+
+o/p:
+ram 
+sita 
+
+
+How to acess Priority and change the Priority 
+________________________________________________
+class MyThread extends Thread 
+{
+	
+	public void run()
+	{
+		 System.out.println(Thread.currentThread().getPriority());
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		
+		System.out.println(Thread.currentThread().getPriority());
+		 MyThread th=new MyThread();
+		 th.setPriority(10);
+		 //th.setPriority(Thread.MAX_PRIORITY);
+		 th.start();
+	}
+}
+
+o/p :
+5
+10
+/*
+public static final int MIN_PRIORITY;   1
+  public static final int NORM_PRIORITY;  5
+  public static final int MAX_PRIORITY;  10
+
+  */
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("child thread "+i);
+		}
+	}
+}
+class Test
+{
+	public static void main(String arg[])
+	{
+		 MyThread th=new MyThread();
+		 th.setPriority(10);
+		 th.start();
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("main thread "+i);
+		}
+	}
+}
+
+o/p: 
+main thread 1
+main thread 2
+child thread 1
+child thread 2
+child thread 3
+child thread 4
+child thread 5
+main thread 3
+main thread 4
+main thread 5
+
+
+
+yield()
+join()
+sleep()
+_________________
+
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+		 int i; 
+		 for(i=1;i<=10;i++)
+		 {
+		 	try 
+		 	{
+		 		Thread.sleep(2000);
+		 	}
+		 	catch(Exception e)
+		 	{
+		 		System.out.println(e);
+		 	}
+		 System.out.println("child thread "+i);
+
+		}
+	}
+}
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		 MyThread th=new MyThread();
+		 
+		 th.start();
+		// Thread.yield();
+		 th.join(10000);
+		 int i; 
+		 for(i=1;i<=5;i++)
+		 {
+		 System.out.println("main thread "+i);
+		}
+	}
+}
+
+o/p:
+child thread 1
+child thread 2
+child thread 3
+child thread 4
+main thread 1
+main thread 2
+main thread 3
+main thread 4
+main thread 5
+child thread 5
+child thread 6
+child thread 7
+child thread 8
+child thread 9
+child thread 10
+
+
+
+
+
+
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		 Runnable r=new Runnable()
+		 {
+		 	public void run()
+		 	{
+		 		System.out.println("child thread");
+		 	}
+		 };
+
+		 Thread th=new Thread(r);
+		 th.start();
+	}
+}
+
+o/p:
+child thread
+
+
+
+
+
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		
+
+		 Thread th=new Thread(  new Runnable()
+		 {
+		 	public void run()
+		 	{
+		 		System.out.println("child thread");
+		 	}
+		 } );
+		 th.start();
+	}
+}
+
+
+o/p:
+child thread 
+
+
+
+
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		
+
+		 new Thread(  new Runnable()
+		 {
+		 	public void run()
+		 	{
+		 		System.out.println("child thread");
+		 	}
+		 } ).start();
+	}
+}
+
+
+o/p:
+child thread 
+
+
+
+
+
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		
+		Runnable ob=()->System.out.println("childthread");
+		Thread th=new Thread(ob);
+		th.start();
+		}
+}
+
+
+o/p:
+childthread
+
+
+
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		
+		
+		new Thread(()->System.out.println("childthread")).start();
+		}
+}
+
+
+o/p:
+childthread
+
+
+
+class Test
+{
+	public static void main(String arg[])throws Exception
+	{
+		
+		
+		new Thread(()->{
+			int i; 
+			for(i=1;i<=5;i++)
+				{System.out.println("childthread");}}).start();
+		}
+}
+
+
+
+
+
+
+class Test
+{
+	public static void main(String arg[])
+	{
+		
+		
+		new Thread(()->{int i; for(i=1;i<=5;i++)System.out.println("childthread1");}).start();
+
+		new Thread(()->{int i; for(i=1;i<=5;i++)System.out.println("childthread2");}).start();
+		}
+}
+
+
+o/p:
+childthread1
+childthread1
+childthread2
+childthread2
+childthread2
+childthread2
+childthread2
+childthread1
+childthread1
+childthread1
+
+
+
+
+
+class Test
+{
+	 static void show()
+	 {
+	 	int i;
+	 	for(i=1;i<=5;i++)
+	 	{
+	 		System.out.println("child thread "+i);
+	 	}
+	 }
+	public static void main(String arg[])
+	{
+
+		Runnable r=Test::show;
+		Thread th=new Thread(r);
+		th.start();
+		for(int i=1;i<=5;i++)
+	 	{
+	 		System.out.println("main thread "+i);
+	 	}
+
+	}
+}
+
+o/p:
+main thread 1
+child thread 1
+child thread 2
+child thread 3
+main thread 2
+child thread 4
+child thread 5
+main thread 3
+main thread 4
+main thread 5        
