@@ -1,0 +1,276 @@
+class Node
+{
+	int data;
+	Node next;
+}
+class Node3
+{
+	public static void main(String args[])
+	{
+		Node F=new Node();
+		Node S=new Node();
+		Node T=new Node();
+		F.data=10;
+		F.next=S;
+		S.data=20;
+		S.next=T;
+		T.data=30;
+		T.next=null;
+
+		Node ptr=F;
+		while(ptr!=null)
+		{
+			System.out.println(ptr.data);
+			ptr=ptr.next;
+		}
+
+
+	}
+}
+
+import java.util.*;
+class Node
+{
+	int data;
+	Node next;
+}
+class NodeTest
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		Node head=null, cur=null, ptr=null;
+		char ch='y';
+		int c=0;
+		while(ch=='y')
+		{
+			c=c+1;
+			cur=new Node();
+			System.out.println("enter node"+c+" data");
+			cur.data=sc.nextInt();
+			cur.next=null;
+			if(head==null)
+			{
+				head=cur;
+			}
+			else{
+				ptr.next=cur;
+			}
+			ptr=cur;
+			System.out.println("Do you want to create next, if yes then press y");
+			ch=sc.next().charAt(0);
+		}
+		System.out.println("elements are: ");
+		ptr=head;
+		while(ptr!=null)
+		{
+			System.out.println(ptr.data);
+			ptr=ptr.next;
+		}
+
+	}
+}
+
+import java.util.*;
+class Node
+{
+	int data;
+	Node next;
+}
+class SL
+{
+	static Node head;
+	static void create()
+	{
+		Scanner sc=new Scanner(System.in);
+		Node  cur=null, ptr=null;
+			char ch='y';
+			int c=0;
+			while(ch=='y')
+			{
+				c=c+1;
+				cur=new Node();
+				System.out.println("enter node"+c+" data");
+				cur.data=sc.nextInt();
+				cur.next=null;
+				if(head==null)
+				{
+					head=cur;
+				}
+				else{
+					ptr.next=cur;
+				}
+				ptr=cur;
+				System.out.println("Do you want to create next, if yes then press y");
+				ch=sc.next().charAt(0);
+			}
+	}
+	static void disp()
+	{
+		System.out.println("elements are: ");
+		Node ptr=head;
+		while(ptr!=null)
+		{
+			System.out.println(ptr.data);
+			ptr=ptr.next;
+		}
+	}
+}
+class NodeTest
+{
+	public static void main(String args[])
+	{
+		SL.create();
+		SL.disp();
+		
+		
+
+	}
+}
+import java.util.*;
+class Node
+{
+	int data;
+	Node next;
+}
+class SL
+{
+	static Node head; //this means SL has a Node
+	static void create()
+	{
+		Scanner sc=new Scanner(System.in);
+		Node  cur=null, ptr=null;
+			char ch='y';
+			int c=0;
+			while(ch=='y')
+			{
+				c=c+1;
+				cur=new Node();
+				System.out.println("enter node"+c+" data:");
+				cur.data=sc.nextInt();
+				cur.next=null;
+				if(head==null)
+				{
+					head=cur;
+				}
+				else{
+					ptr.next=cur;
+				}
+				ptr=cur;
+				System.out.println("Do you want to create next, if yes then press y");
+				ch=sc.next().charAt(0);
+			}
+	}
+
+	static void insertBeg(int ele){
+              Node cur=new Node();
+              cur.data=ele;
+              cur.next=head;
+              head=cur;
+              System.out.println(ele+" data inserted at the beginning!");
+
+	}
+	static void disp()
+	{
+		System.out.println("elements are: ");
+		Node ptr=head;
+		while(ptr!=null)
+		{
+			System.out.println(ptr.data);
+			ptr=ptr.next;
+		}
+	}
+}
+class InsertBeg
+{
+	public static void main(String args[])
+	{
+		SL.create();
+		SL.disp();
+		SL.insertBeg(5);
+		SL.disp();
+		
+		
+
+	}
+}
+
+import java.util.*;
+class Node
+{
+	int data;
+	Node next;
+}
+class SL
+{
+	static Node head; //this means SL has a Node
+	static void create()
+	{
+		Scanner sc=new Scanner(System.in);
+		Node  cur=null, ptr=null;
+			char ch='y';
+			int c=0;
+			while(ch=='y')
+			{
+				c=c+1;
+				cur=new Node();
+				System.out.println("enter node"+c+" data:");
+				cur.data=sc.nextInt();
+				cur.next=null;
+				if(head==null)
+				{
+					head=cur;
+				}
+				else{
+					ptr.next=cur;
+				}
+				ptr=cur;
+				System.out.println("Do you want to create next, if yes then press y");
+				ch=sc.next().charAt(0);
+			}
+	}
+	static void insertEnd(int ele){
+		Node cur=new Node();
+		cur.data=ele;
+		cur.next=null;
+		if(head==null)
+		{
+			
+			head=cur;
+			return ;
+		}
+		Node ptr=head;
+		while(ptr.next!=null)
+		{
+			ptr=ptr.next;
+		}
+		ptr.next=cur;
+		System.out.println(ele+" data inserted at the end!");
+
+	}
+	static void disp()
+	{
+		System.out.println("elements are: ");
+		Node ptr=head;
+		while(ptr!=null)
+		{
+			System.out.println(ptr.data);
+			ptr=ptr.next;
+		}
+	}
+}
+class InsertEnd
+{
+	public static void main(String args[])
+	{
+		SL.create();
+		SL.disp();
+		SL.insertEnd(7);
+		SL.disp();
+
+
+		
+		
+
+	}
+}
